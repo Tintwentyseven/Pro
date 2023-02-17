@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<br lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="project5.css"/>
+    <title>GG Form</title>
+    <meta http-equiv="refresh" content="100">
+    <link rel="shortcut icon" type="x-icon" href="favicon1.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.css">
+   
+</head>
+<body >
+    <div class="GG">
+        <div class="title-div">
+            <p contenteditable="true" spellcheck="true">Helo</p>
+            <h1>PHẠM TRUNG TÍN</h1>
+            <p>This is a google form.This form is created with html and css</p>
+            <p class="Require">*Required</p>
+        </div>
+        <div class="name-div">
+            <div class="name">What is your name?<span class="Require">*</span></div>
+            <div class="input-div"><input type="text" name="answer" placeholder="Your name" x-webkit-speech></div>
+        </div>
+        <div class="college-div">
+            <div class="name">Enter your college name?<span class="Require">*</span></div>
+            <div class="input-div"><input type="input" name="answer" placeholder="Your college"></div>
+        </div>
+        <div class="email-div">
+            <div class="name">Enter your email<span class="Require">*</span></div>
+            <div class="input-div"><input type="input" name="answer" placeholder="Your email"></div>
+        </div>
+        <div class="phone-div">
+            <div class="name">Enter your mobile phone<span class="Require">*</span></div>
+            <div class="input-div"><input type="input" name="answer" placeholder="Your mobile phone"></div>
+        </div>
+        <div >
+            <button type="button" id="press">SEND</button>
+            <button onclick="window.print()" id="press1">PDF</button>
+            <button  id="debounce">Debounce</button>
+            <button  id="throttle">Throttle</button>
+        </div>
+        <div class="last-div">
+            <p class="never" id="through"></p>
+            <p class="term">This content is neither created nor endorsed by Google, Report Abuse - Term of Service - Private policy</p>
+            <h2 >GOOGLE FORMS</h2>
+        </div>
+    </div>
+    <script src="project5.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+      
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+      
+    <script type="text/javascript">
+      $(document).ready(function() {
+        toastr.options.timeOut = 1500; // 1.5s
+        toastr.info('Page Loaded!');
+        $('#press').click(function() {
+            Command: toastr["warning"]("My name is Inigo Montoya. You killed my father. Prepare to die!")
+
+            toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        });
+      });
+      var button = document.getElementById("debounce");
+    const debounce = (func, delay) => {
+        let debounceTimer
+        return function() {
+            const context = this
+            const args = arguments
+                clearTimeout(debounceTimer)
+                    debounceTimer
+                = setTimeout(() => func.apply(context, args), delay)
+        }
+    }
+    button.addEventListener('click', debounce(function() {
+            alert("Hello\nNo matter how many times you" +
+                "click the debounce button, I get " +
+                "executed once every 3 seconds!!")
+                            }, 3000));
+                            const btn=document.querySelector("#throttle");
+      
+      // Throttling Function
+      const throttleFunction=(func, delay)=>{
+        
+        // Previously called time of the function
+        let prev = 0; 
+        return (...args) => {
+          // Current called time of the function
+          let now = new Date().getTime(); 
+        
+          // Logging the difference between previously 
+          // called and current called timings
+          console.log(now-prev, delay); 
+            
+          // If difference is greater than delay call
+          // the function again.
+          if(now - prev> delay){ 
+            prev = now;
+        
+            // "..." is the spread operator here 
+            // returning the function with the 
+            // array of arguments
+            return func(...args);  
+          }
+        }
+      }
+      btn.addEventListener("click", throttleFunction(()=>{
+        console.log("button is clicked")
+      }, 4000));
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.js"></script>
+
+            
+      
+        
+
+
+</body>
+</html>
